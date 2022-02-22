@@ -25,6 +25,12 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+auth_data.py
+.pg-env
+persistentdata/*
+locals_auth.py
+.envTGB
+
 MANIFEST
 
 # PyInstaller
@@ -103,12 +109,15 @@ celerybeat.pid
 
 # Environments
 .env
+.env/
 .venv
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+envBE/
+#backend/
 
 # Spyder project settings
 .spyderproject
@@ -127,3 +136,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+API_KEY.py
