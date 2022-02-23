@@ -1,16 +1,13 @@
 import random
-import asyncio
 
 
-# async def get_and_genirate_words():
 def get_and_genirate_words(): 
-    file_name = '10_sloynik.txt'
+    # file_name = '10_sloynik.txt'
+    file_name = 'all_words.txt'
     slowy = {}
     with open(file_name,'r',encoding='utf-8-sig') as read_sloy:
-        # print(read_sloy.readlines())
         for line in read_sloy.readlines():
             split_line = line.replace(" – "," - ").replace("\n","").replace("\ufeff",'').split(" - ")
-            # print(split_line)
             slowy[split_line[0]]=split_line[1]
 
     res_key = random.choice(list(slowy.keys()))
@@ -29,10 +26,11 @@ def get_and_genirate_words():
 
     # "перемешиваю эти 3 слова"
     rand_pos_list = random.sample(res_list,3)
-    # print('rand_pos_list',rand_pos_list)
-    # print("res_key",res_key)
-    # print('res_val_true',res_val_true)
     return res_key,res_val_true,rand_pos_list
+
+    #тестовый блок, для работы в консоли 
+    
+    
     # print("_"*20+'\n',f"Слово {res_key}")
     # #при выводе вывожу по порядку "перемешенный" список
     # print(f"1){rand_pos_list[0]}")

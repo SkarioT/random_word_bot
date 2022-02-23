@@ -6,7 +6,7 @@ from bot_app.states import GameStates
 from .app import dp,bot
 
 
-from main_cli import get_and_genirate_words
+from get_word_cli import get_and_genirate_words
 
 welcome_msg = "Ceść!\nБот позволяет изучать польские слова и фразы. Список доступных команд:\n/help - возвращет данное сообщение\n/start - возвращет данное сообщение\n/10words - запускает тест на изучение 10 случайных слов"
 
