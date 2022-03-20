@@ -1,0 +1,50 @@
+import random
+
+    # file_name = '10_sloynik.txt'
+file_name = 'all_words.txt'
+slowy = {}
+with open(file_name,'r',encoding='utf-8-sig') as read_sloy:
+    for line in read_sloy.readlines():
+        split_line = line.replace(" – "," - ").replace("\n","").replace("\ufeff",'').split(" - ")
+        slowy[split_line[0]]=split_line[1]
+
+def get_and_genirate_words(slowy): 
+
+    quiestion_key = random.choice(list(slowy.keys()))
+    answer_true = slowy.get(quiestion_key)
+
+    #добиваюст рандомное слово из словоря/базы
+    answer_fake_1 = random.choice(list(slowy.values()))
+    while answer_fake_1 == slowy.get(quiestion_key):
+        answer_fake_1 = random.choice(list(slowy.values()))
+    answer_2 = random.choice(list(slowy.values()))
+    while answer_2 == answer_true or answer_2==answer_fake_1:
+        answer_2 = random.choice(list(slowy.values()))
+
+    #верное слово + 2 рамдомных закиываю в один лист    
+    res_list = [answer_true,answer_fake_1,answer_2]
+
+    # "перемешиваю эти 3 слова"
+    rand_pos_list = random.sample(res_list,3)
+    resault = {}
+    resault = {'question' : quiestion_key,'answer':answer_true}
+    return quiestion_key,answer_true,rand_pos_list
+
+    #тестовый блок, для работы в консоли 
+    
+    
+    # print("_"*20+'\n',f"Слово {quiestion_key}")
+    # #при выводе вывожу по порядку "перемешенный" список
+    # print(f"1){rand_pos_list[0]}")
+    # print(f"2){rand_pos_list[1]}")
+    # print(f"3){rand_pos_list[2]}")
+    # inp = input("Выберите номер верного значения: ")
+
+    # if rand_pos_list[int(inp)-1] == answer_true:
+    #     print(f"Всё верно {quiestion_key} это {answer_true}")
+    # else:
+    #     print(f"{rand_pos_list[int(inp)-1]} не является переводом для слова {quiestion_key}")
+    #     print(f"Верный перевод слова {quiestion_key} - {answer_true}")
+        
+res = get_and_genirate_words(slowy)
+print(res)
